@@ -2,105 +2,142 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <title>Crunchy's Closet by Sol</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-      background-color: #fff8f5;
-      background-image:
-        repeating-linear-gradient(45deg, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, rgba(255,192,203,0.1) 36px, rgba(255,192,203,0.1) 72px),
-        repeating-linear-gradient(-45deg, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, rgba(255,192,203,0.1) 36px, rgba(255,192,203,0.1) 72px);
-      background-size: 100px 100px;
-      position: relative;
-    }
+    <meta charset="UTF-8">
+    <title>Crunchy's Closet by Sol</title>
+    <style>
+        body {
+            background-color: #fff8f4;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 38px,
+                #ffeef6 38px,
+                #ffeef6 40px
+            ),
+            repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 38px,
+                #ffeef6 38px,
+                #ffeef6 40px
+            );
+            background-size: 80px 80px;
+            font-family: "Arial Rounded MT Bold", "Hiragino Sans GB", sans-serif;
+            margin: 0;
+            padding: 2em;
+            text-align: center;
+        }
 
-    .emoji-bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 20px;
-      opacity: 0.3;
-    }
+        .title {
+            font-size: 2em;
+            color: #c84b8e;
+            font-weight: bold;
+        }
 
-    .emoji-bg span {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .emoji-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            font-size: 32px;
+            pointer-events: none;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 80px);
+            grid-auto-rows: 80px;
+            opacity: 0.08;
+        }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 40px 20px;
-    }
+        .emoji-bg span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    h1 {
-      font-size: 28px;
-      color: #cc2b7c;
-    }
+        .main-buttons {
+            margin: 1em 0;
+            position: relative;
+            z-index: 1;
+        }
 
-    button {
-      background-color: #e87ea3;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 16px;
-      border-radius: 24px;
-      font-size: 16px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
+        button {
+            font-size: 1em;
+            padding: 0.5em 1em;
+            margin: 0.3em;
+            border: none;
+            border-radius: 1em;
+            background-color: #da88b0;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
 
-    button:hover {
-      box-shadow: 0 0 10px #e87ea3;
-      transform: scale(1.03);
-    }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
 
-    .footer {
-      margin-top: 100px;
-      color: #666;
-      font-size: 12px;
-    }
+        #addForm {
+            display: none;
+            flex-direction: column;
+            gap: 0.5em;
+            margin-top: 1em;
+        }
 
-    .footer a {
-      color: #cc2b7c;
-      text-decoration: none;
-    }
+        input {
+            padding: 0.5em;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        .footer {
+            margin-top: 2em;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-  <div class="emoji-bg" id="emojiBg"></div>
+    <div class="emoji-bg" id="emojiBg"></div>
 
-  <div class="container">
-    <h1>🐾🍪 Crunchy's Closet by Sol 🖤💜</h1>
-    <button onclick="alert('添加裙子功能尚未连接')">添加裙子</button>
+    <div class="title">🐾🍪Crunchy's Closet by Sol🖤💜</div>
+
+    <div class="main-buttons">
+        <button onclick="toggleForm()">添加裙子</button>
+    </div>
+
+    <div id="addForm">
+        <input type="text" placeholder="裙子名称">
+        <input type="text" placeholder="状态（定金 / 尾款 / 已入柜）">
+        <input type="number" placeholder="金额">
+        <input type="date" placeholder="购买日期">
+        <button onclick="submitSkirt()">保存</button>
+    </div>
+
     <div class="footer">Powered by Sol 🪡</div>
-  </div>
 
-  <script>
-    // Generate emoji background
-    const emojiBg = document.getElementById("emojiBg");
-    const rows = 20;
-    const cols = 20;
-    for (let i = 0; i < rows * cols; i++) {
-      const span = document.createElement("span");
-      span.textContent = "🐾🍪";
-      emojiBg.appendChild(span);
-    }
-  </script>
+    <script>
+        function toggleForm() {
+            const form = document.getElementById("addForm");
+            form.style.display = form.style.display === "flex" ? "none" : "flex";
+        }
+
+        function submitSkirt() {
+            alert("裙子已添加！");
+        }
+
+        function generateEmojiBg() {
+            const bg = document.getElementById("emojiBg");
+            for (let i = 0; i < 200; i++) {
+                const span = document.createElement("span");
+                span.textContent = i % 2 === 0 ? "🐾" : "🍪";
+                bg.appendChild(span);
+            }
+        }
+
+        generateEmojiBg();
+    </script>
 </body>
 </html>
