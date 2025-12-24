@@ -2,142 +2,55 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <title>Crunchy's Closet by Sol</title>
-    <style>
-        body {
-            background-color: #fff8f4;
-            background-image: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 38px,
-                #ffeef6 38px,
-                #ffeef6 40px
-            ),
-            repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 38px,
-                #ffeef6 38px,
-                #ffeef6 40px
-            );
-            background-size: 80px 80px;
-            font-family: "Arial Rounded MT Bold", "Hiragino Sans GB", sans-serif;
-            margin: 0;
-            padding: 2em;
-            text-align: center;
-        }
-
-        .title {
-            font-size: 2em;
-            color: #c84b8e;
-            font-weight: bold;
-        }
-
-        .emoji-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            font-size: 32px;
-            pointer-events: none;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, 80px);
-            grid-auto-rows: 80px;
-            opacity: 0.08;
-        }
-
-        .emoji-bg span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .main-buttons {
-            margin: 1em 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        button {
-            font-size: 1em;
-            padding: 0.5em 1em;
-            margin: 0.3em;
-            border: none;
-            border-radius: 1em;
-            background-color: #da88b0;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        #addForm {
-            display: none;
-            flex-direction: column;
-            gap: 0.5em;
-            margin-top: 1em;
-        }
-
-        input {
-            padding: 0.5em;
-            font-size: 1em;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .footer {
-            margin-top: 2em;
-            font-size: 0.9em;
-            color: #888;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>🐾🍪Crunchy's Closet by Sol🖤💜</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="emoji-bg" id="emojiBg"></div>
-
-    <div class="title">🐾🍪Crunchy's Closet by Sol🖤💜</div>
-
-    <div class="main-buttons">
-        <button onclick="toggleForm()">添加裙子</button>
+  <div class="emoji-bg" id="emojiBg"></div>
+  <div class="header">
+    <h1>🐾🍪Crunchy's Closet by Sol🖤💜</h1>
+    <div class="controls">
+      <button onclick="toggleForm()">添加裙子</button>
+      <button class="filter-btn" onclick="filterStatus('全部')">全部</button>
+      <button class="filter-btn" onclick="filterStatus('定金')">定金</button>
+      <button class="filter-btn" onclick="filterStatus('尾款')">尾款</button>
+      <button class="filter-btn" onclick="filterStatus('已入柜')">已入柜</button>
+      <button class="filter-btn" onclick="filterStatus('搭配')">搭配</button>
+      <select id="sortMode" onchange="sortCards()">
+        <option value="desc">按日期倒序</option>
+        <option value="asc">按日期正序</option>
+      </select>
+      <div id="summary">总件数: 0 | 总金额: ¥0</div>
     </div>
+  </div>
 
-    <div id="addForm">
-        <input type="text" placeholder="裙子名称">
-        <input type="text" placeholder="状态（定金 / 尾款 / 已入柜）">
-        <input type="number" placeholder="金额">
-        <input type="date" placeholder="购买日期">
-        <button onclick="submitSkirt()">保存</button>
-    </div>
+  <div id="form" style="display:none;">
+    <input placeholder="裙子名称" id="name" />
+    <input type="date" id="buyDate" />
+    <select id="status" onchange="toggleStatusFields()">
+      <option value="定金">定金</option>
+      <option value="尾款">尾款</option>
+      <option value="已入柜">已入柜</option>
+      <option value="搭配">搭配</option>
+    </select>
+    <div id="amountFields"></div>
+    <input placeholder="尺码" id="size" />
+    <input placeholder="肩宽" id="shoulder" />
+    <input placeholder="胸围" id="bust" />
+    <input placeholder="腰围" id="waist" />
+    <input placeholder="裙长" id="length" />
+    <input placeholder="小物（多个用逗号）" id="accessories" />
+    <input placeholder="款式类别" id="category" />
+    <textarea placeholder="备注" id="notes"></textarea>
+    <input type="file" id="imgUpload" />
+    <button onclick="submitCard()">保存</button>
+  </div>
 
-    <div class="footer">Powered by Sol 🪡</div>
+  <div id="cards" class="card-container"></div>
+  <div class="system-icon">𝒮</div>
+  <div class="footer">Powered by Sol 🪡</div>
 
-    <script>
-        function toggleForm() {
-            const form = document.getElementById("addForm");
-            form.style.display = form.style.display === "flex" ? "none" : "flex";
-        }
-
-        function submitSkirt() {
-            alert("裙子已添加！");
-        }
-
-        function generateEmojiBg() {
-            const bg = document.getElementById("emojiBg");
-            for (let i = 0; i < 200; i++) {
-                const span = document.createElement("span");
-                span.textContent = i % 2 === 0 ? "🐾" : "🍪";
-                bg.appendChild(span);
-            }
-        }
-
-        generateEmojiBg();
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>

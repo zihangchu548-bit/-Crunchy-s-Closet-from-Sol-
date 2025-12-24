@@ -1,56 +1,92 @@
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-image: repeating-linear-gradient(45deg, #fff6f0 0px, #fff6f0 40px, #fff1e6 40px, #fff1e6 80px),
-                      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><text x="0" y="50" font-size="48">🐾🍪</text></svg>');
-    background-repeat: repeat;
-    background-size: auto, 160px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff7f2;
+  background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 38px,
+      #fff1e6 38px,
+      #fff1e6 40px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 38px,
+      #fff1e6 38px,
+      #fff1e6 40px
+    ),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><text x="0" y="50" font-size="48">🐾🍪</text></svg>');
+  background-size: auto, auto, 160px;
+  background-repeat: repeat;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
 }
 
-.header h1 {
-    font-size: 1.8rem;
-    margin: 1rem;
-    color: #c05b8e;
-    text-shadow: 2px 2px 4px #fff;
-}
-
-.buttons {
-    margin-bottom: 1rem;
+h1 {
+  font-size: 2rem;
+  color: #cc5d96;
+  text-shadow: 0 0 5px #fff;
 }
 
 button, select {
-    margin: 0.3rem;
-    padding: 0.5rem 1rem;
-    background-color: #de87b4;
-    border: none;
-    border-radius: 1.2rem;
-    font-size: 1rem;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  border: none;
+  background-color: #de87b4;
+  color: white;
+  margin: 0.3em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover, select:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-#summary {
-    margin-top: 0.5rem;
-    font-weight: bold;
+input, textarea {
+  display: block;
+  margin: 0.3em auto;
+  padding: 0.4em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 90%;
+}
+
+.card-container {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 1em;
+}
+
+.card {
+  background: white;
+  border-radius: 1em;
+  padding: 1em;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .system-icon {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    background-color: #c05b8e;
-    color: white;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    padding: 0.6rem 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #cc5d96;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.6em 1em;
+  border-radius: 50%;
+}
+
+.footer {
+  margin-top: 2em;
+  color: #aaa;
+  font-size: 0.9rem;
 }
