@@ -1,0 +1,47 @@
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-image: url('background.png');
+  background-repeat: repeat;
+  background-size: 120px;
+}
+header {
+  text-align: center;
+  padding: 20px;
+}
+button {
+  border: none;
+  border-radius: 12px;
+  background-color: pink;
+  padding: 10px 16px;
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+button::after {
+  content: "";
+  background: rgba(255, 255, 255, 0.5);
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  padding-top: 100%;
+  width: 100%;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.4s ease-out, opacity 0.8s ease-out;
+}
+button:active::after {
+  width: 200%;
+  opacity: 1;
+  transition: 0s;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}

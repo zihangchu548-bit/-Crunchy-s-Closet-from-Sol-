@@ -1,95 +1,40 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>🐾🍪 Crunchy's Closet by Sol 🖤💜</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #fff6f2;
-            background-image: repeating-linear-gradient(
-                45deg,
-                #fff6f2 0,
-                #fff6f2 40px,
-                transparent 40px,
-                transparent 80px
-            ), repeating-linear-gradient(
-                -45deg,
-                #fff6f2 0,
-                #fff6f2 40px,
-                transparent 40px,
-                transparent 80px
-            );
-            background-size: 80px 80px;
-            background-blend-mode: lighten;
-            padding: 20px;
-        }
-
-        .logo {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 1em;
-        }
-
-        .card {
-            border-radius: 16px;
-            padding: 20px;
-            margin: 10px auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            max-width: 600px;
-            background: white;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .button {
-            background: pink;
-            color: black;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            margin: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .button:after {
-            content: "";
-            background: rgba(255, 255, 255, 0.5);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1);
-            border-radius: 100%;
-            width: 0;
-            height: 0;
-            transition: width 0.4s ease, height 0.4s ease;
-        }
-
-        .button:active:after {
-            width: 200px;
-            height: 200px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.9em;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crunchy's Closet by Sol</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="logo">🐾🍪 Crunchy's Closet by Sol 🖤💜</div>
-    <div class="card">
-        <p>这是最终 1.0 版本的静态页面结构示例，用于前端样式与背景测试。</p>
+  <header>
+    <h1>🐾🍪 Crunchy's Closet by Sol 🖤💜</h1>
+  </header>
+  <main>
+    <div class="controls">
+      <button class="ripple">添加裙子</button>
+      <button class="ripple">添加搭配</button>
+      <div class="filters">
+        <button>全部</button>
+        <button>定金</button>
+        <button>尾款</button>
+        <button>已入柜</button>
+        <button>搭配</button>
+      </div>
+      <div class="sort">
+        <button>按购买日期升序</button>
+        <button>按购买日期降序</button>
+      </div>
     </div>
-    <button class="button">添加裙子</button>
-    <footer>Powered by Sol🪡</footer>
+    <div class="summary">
+      <span>总件数: 0</span>
+      <span>总金额: ¥0</span>
+    </div>
+    <div id="card-container"></div>
+  </main>
+  <footer>
+    <p>Powered by Sol🪡</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
