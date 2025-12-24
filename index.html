@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐾🍪Crunchy's Closet from Sol🖤💜</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf7f0;
+      margin: 0;
+      padding: 1em;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #d17ba0;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin: 1em 0;
+    }
+    .btn {
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 6px;
+      background-color: #d17ba0;
+      color: white;
+      cursor: pointer;
+    }
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1em;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 1em;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 0.5em;
+    }
+    .form-section {
+      margin-bottom: 0.5em;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.3em;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.5em;
+      margin-bottom: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐾🍪Crunchy's Closet from Sol🖤💜</h1>
+  <div class="controls">
+    <button class="btn" onclick="showForm()">添加裙子</button>
+    <select class="btn" onchange="filterCards(this.value)">
+      <option value="all">全部状态</option>
+      <option value="定金">定金</option>
+      <option value="尾款">尾款</option>
+      <option value="已入柜">已入柜</option>
+    </select>
+  </div>
+  <div id="formContainer" style="display:none;">
+    <div class="card">
+      <div class="form-section">
+        <label>上传图片</label>
+        <input type="file" id="imageUpload" accept="image/*">
+      </div>
+      <div class="form-section">
+        <label>裙子名称</label>
+        <input type="text" id="name" />
+      </div>
+      <div class="form-section">
+        <label>状态</label>
+        <select id="status" onchange="toggleStatusFields()">
+          <option value="定金">定金</option>
+          <option value="尾款">尾款</option>
+          <option value="已入柜">已入柜</option>
+        </select>
+      </div>
+      <div class="form-section" id="depositField">
+        <label>金额</label>
+        <input type="text" id="deposit" />
+      </div>
+      <div class="form-section" id="finalPaymentField" style="display:none;">
+        <label>金额</label>
+        <input type="text" id="finalAmount" />
+        <label>付款日期</label>
+        <input type="date" id="paymentDate" />
+      </div>
+      <div class="form-section" id="closetField" style="display:none;">
+        <label>金额</label>
+        <input type="text" id="closetAmount" />
+      </div>
+      <div class="form-section">
+        <label>购买日期</label>
+        <input type="date" id="purchaseDate" />
+      </div>
+      <div class="form-section">
+        <label>尺码</label>
+        <input type="text" id="size" />
+      </div>
+      <div class="form-section">
+        <label>肩宽</label>
+        <input type="text" id="shoulder" />
+      </div>
+      <div class="form-section">
+        <label>胸围</label>
+        <input type="text" id="bust" />
+      </div>
+      <div class="form-section">
+        <label>腰围</label>
+        <input type="text" id="waist" />
+      </div>
+      <div class="form-section">
+        <label>裙长</label>
+        <input type="text" id="length" />
+      </div>
+      <div class="form-section">
+        <label>小物（多个请用逗号分隔）</label>
+        <input type="text" id="accessories" />
+      </div>
+      <div class="form-section">
+        <label>款式类别</label>
+        <input type="text" id="category" />
+      </div>
+      <div class="form-section">
+        <label>备注</label>
+        <textarea id="notes"></textarea>
+      </div>
+      <button class="btn" onclick="addSkirt()">保存</button>
+    </div>
+  </div>
+  <div class="card-container" id="skirtCards"></div>
+  <script>
+    function showForm() {
+      document.getElementById('formContainer').style.display = 'block';
+    }
+    function toggleStatusFields() {
+      const status = document.getElementById('status').value;
+      document.getElementById('depositField').style.display = status === '定金' ? 'block' : 'none';
+      document.getElementById('finalPaymentField').style.display = status === '尾款' ? 'block' : 'none';
+      document.getElementById('closetField').style.display = status === '已入柜' ? 'block' : 'none';
+    }
+    function filterCards(status) {
+      const cards = document.querySelectorAll('.card[data-status]');
+      cards.forEach(card => {
+        card.style.display = (status === 'all' || card.dataset.status === status) ? 'block' : 'none';
+      });
+    }
+    function addSkirt() {
+      const name = document.getElementById('name').value;
+      const status = document.getElementById('status').value;
+      const purchaseDate = document.getElementById('purchaseDate').value;
+      const size = document.getElementById('size').value;
+      const shoulder = document.getElementById('shoulder').value;
+      const bust = document.getElementById('bust').value;
+      const waist = document.getElementById('waist').value;
+      const length = document.getElementById('length').value;
+      const accessories = document.getElementById('accessories').value;
+      const category = document.getElementById('category').value;
+      const notes = document.getElementById('notes').value;
+      const imageInput = document.getElementById('imageUpload');
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.status = status;
+        card.innerHTML = `
+          <img src="${e.target.result}" alt="skirt image" />
+          <h3>${name}</h3>
+          <p><strong>状态:</strong> ${status}</p>
+          <p><strong>购买日期:</strong> ${purchaseDate}</p>
+          <p><strong>尺码:</strong> ${size} / 肩宽 ${shoulder} / 胸围 ${bust} / 腰围 ${waist} / 裙长 ${length}</p>
+          <p><strong>小物:</strong> ${accessories}</p>
+          <p><strong>类别:</strong> ${category}</p>
+          <p><strong>备注:</strong> ${notes}</p>
+        `;
+        document.getElementById('skirtCards').appendChild(card);
+      }
+      if (imageInput.files.length > 0) {
+        reader.readAsDataURL(imageInput.files[0]);
+      }
+    }
+  </script>
+</body>
+</html>
