@@ -1,1 +1,81 @@
-/* Placeholder for CSS */
+
+body {
+  background-color: #fff3f6;
+  background-image: 
+    linear-gradient(45deg, transparent 74%, transparent 75%, #fff 75%, #fff 76%, transparent 76%),
+    linear-gradient(-45deg, transparent 74%, transparent 75%, #fff 75%, #fff 76%, transparent 76%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><text y="50%" x="50%" text-anchor="middle" alignment-baseline="middle" font-size="18">🐾🍪</text></svg>');
+  background-size: 40px 40px, 40px 40px, 80px 80px;
+  background-repeat: repeat;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+  font-size: 28px;
+  margin-top: 20px;
+  color: #e4749e;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #888;
+  font-style: italic;
+}
+
+button {
+  background-color: #f9a6c2;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 20px;
+  margin: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+
+button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 16px;
+  margin: 10px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+input, select, textarea {
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}

@@ -1,1 +1,44 @@
-<!-- Placeholder for full HTML -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾🍪 Crunchy's Closet by Sol 🖤💜</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🐾🍪 Crunchy's Closet by Sol 🖤💜</h1>
+  <div id="controls">
+    <button onclick="openForm('dress')">添加裙子</button>
+  </div>
+  <div id="form-container" style="display:none;">
+    <form id="item-form">
+      <input type="text" placeholder="裙子名称" id="name" required />
+      <input type="date" placeholder="购买日期" id="purchaseDate" />
+      <select id="status" onchange="updateStatusFields()" required>
+        <option value="">选择状态</option>
+        <option value="定金">定金</option>
+        <option value="尾款">尾款</option>
+        <option value="已入柜">已入柜</option>
+        <option value="搭配">搭配</option>
+      </select>
+      <div id="status-fields"></div>
+      <input type="text" placeholder="尺码" id="size" />
+      <input type="text" placeholder="肩宽" id="shoulder" />
+      <input type="text" placeholder="胸围" id="bust" />
+      <input type="text" placeholder="腰围" id="waist" />
+      <input type="text" placeholder="裙长" id="length" />
+      <input type="text" placeholder="小物（多个用逗号）" id="accessories" />
+      <input type="text" placeholder="款式类别" id="styleType" />
+      <textarea placeholder="备注" id="notes"></textarea>
+      <input type="file" id="image" accept="image/*" />
+      <button type="button" onclick="saveItem()">保存</button>
+      <button type="button" onclick="cancelForm()">取消</button>
+    </form>
+  </div>
+  <div id="items-container"></div>
+  <footer>Powered by Sol🪡</footer>
+  <script src="script.js"></script>
+</body>
+</html>
