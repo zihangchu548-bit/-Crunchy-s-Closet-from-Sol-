@@ -1,4 +1,1 @@
-
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Crunchy's Closet JS loaded.");
-});
+// Placeholder for JavaScript logic
