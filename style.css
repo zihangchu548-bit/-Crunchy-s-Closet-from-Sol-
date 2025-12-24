@@ -1,92 +1,29 @@
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff7f2;
   background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 38px,
-      #fff1e6 38px,
-      #fff1e6 40px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 38px,
-      #fff1e6 38px,
-      #fff1e6 40px
-    ),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><text x="0" y="50" font-size="48">🐾🍪</text></svg>');
-  background-size: auto, auto, 160px;
+    45deg,
+    #fdf6f0,
+    #fdf6f0 40px,
+    #fff 40px,
+    #fff 80px
+  ),
+  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><text x="0" y="30" font-size="30">🐾🍪</text></svg>');
   background-repeat: repeat;
-  margin: 0;
-  padding: 2rem;
+  background-size: auto, 120px 120px;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.header {
   text-align: center;
 }
 
-h1 {
-  font-size: 2rem;
-  color: #cc5d96;
-  text-shadow: 0 0 5px #fff;
-}
-
-button, select {
-  padding: 0.5em 1em;
-  border-radius: 1em;
+button {
+  padding: 10px 20px;
+  background-color: #e48fb2;
+  color: white;
   border: none;
-  background-color: #de87b4;
-  color: white;
-  margin: 0.3em;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px #ccc;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover, select:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-input, textarea {
-  display: block;
-  margin: 0.3em auto;
-  padding: 0.4em;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 90%;
-}
-
-.card-container {
-  display: grid;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin-top: 1em;
-}
-
-.card {
-  background: white;
-  border-radius: 1em;
-  padding: 1em;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.system-icon {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: #cc5d96;
-  color: white;
-  font-size: 1.2rem;
-  padding: 0.6em 1em;
-  border-radius: 50%;
-}
-
-.footer {
-  margin-top: 2em;
-  color: #aaa;
-  font-size: 0.9rem;
 }

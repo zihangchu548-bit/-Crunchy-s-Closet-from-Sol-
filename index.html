@@ -3,54 +3,22 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <title>🐾🍪Crunchy's Closet by Sol🖤💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crunchy's Closet by Sol</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="emoji-bg" id="emojiBg"></div>
   <div class="header">
-    <h1>🐾🍪Crunchy's Closet by Sol🖤💜</h1>
-    <div class="controls">
-      <button onclick="toggleForm()">添加裙子</button>
-      <button class="filter-btn" onclick="filterStatus('全部')">全部</button>
-      <button class="filter-btn" onclick="filterStatus('定金')">定金</button>
-      <button class="filter-btn" onclick="filterStatus('尾款')">尾款</button>
-      <button class="filter-btn" onclick="filterStatus('已入柜')">已入柜</button>
-      <button class="filter-btn" onclick="filterStatus('搭配')">搭配</button>
-      <select id="sortMode" onchange="sortCards()">
-        <option value="desc">按日期倒序</option>
-        <option value="asc">按日期正序</option>
-      </select>
-      <div id="summary">总件数: 0 | 总金额: ¥0</div>
-    </div>
+    <h1>🐾🍪 Crunchy's Closet by Sol 🖤💜</h1>
+    <button id="add-dress-btn">添加裙子</button>
   </div>
-
-  <div id="form" style="display:none;">
-    <input placeholder="裙子名称" id="name" />
-    <input type="date" id="buyDate" />
-    <select id="status" onchange="toggleStatusFields()">
-      <option value="定金">定金</option>
-      <option value="尾款">尾款</option>
-      <option value="已入柜">已入柜</option>
-      <option value="搭配">搭配</option>
-    </select>
-    <div id="amountFields"></div>
-    <input placeholder="尺码" id="size" />
-    <input placeholder="肩宽" id="shoulder" />
-    <input placeholder="胸围" id="bust" />
-    <input placeholder="腰围" id="waist" />
-    <input placeholder="裙长" id="length" />
-    <input placeholder="小物（多个用逗号）" id="accessories" />
-    <input placeholder="款式类别" id="category" />
-    <textarea placeholder="备注" id="notes"></textarea>
-    <input type="file" id="imgUpload" />
-    <button onclick="submitCard()">保存</button>
+  <div id="dress-form-container" style="display:none;">
+    <!-- 模拟添加表单 -->
+    <form id="dress-form">
+      <label>裙子名称: <input type="text" name="name" /></label>
+      <button type="submit">保存</button>
+    </form>
   </div>
-
-  <div id="cards" class="card-container"></div>
-  <div class="system-icon">𝒮</div>
-  <div class="footer">Powered by Sol 🪡</div>
-
   <script src="script.js"></script>
 </body>
 </html>
