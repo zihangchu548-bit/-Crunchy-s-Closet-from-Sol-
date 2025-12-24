@@ -1,1 +1,106 @@
-<!-- Final perfect version placeholder -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crunchy's Closet by Sol</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+      background-color: #fff8f5;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, rgba(255,192,203,0.1) 36px, rgba(255,192,203,0.1) 72px),
+        repeating-linear-gradient(-45deg, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, rgba(255,192,203,0.1) 36px, rgba(255,192,203,0.1) 72px);
+      background-size: 100px 100px;
+      position: relative;
+    }
+
+    .emoji-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 20px;
+      opacity: 0.3;
+    }
+
+    .emoji-bg span {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #cc2b7c;
+    }
+
+    button {
+      background-color: #e87ea3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 16px;
+      border-radius: 24px;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:hover {
+      box-shadow: 0 0 10px #e87ea3;
+      transform: scale(1.03);
+    }
+
+    .footer {
+      margin-top: 100px;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .footer a {
+      color: #cc2b7c;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji-bg" id="emojiBg"></div>
+
+  <div class="container">
+    <h1>🐾🍪 Crunchy's Closet by Sol 🖤💜</h1>
+    <button onclick="alert('添加裙子功能尚未连接')">添加裙子</button>
+    <div class="footer">Powered by Sol 🪡</div>
+  </div>
+
+  <script>
+    // Generate emoji background
+    const emojiBg = document.getElementById("emojiBg");
+    const rows = 20;
+    const cols = 20;
+    for (let i = 0; i < rows * cols; i++) {
+      const span = document.createElement("span");
+      span.textContent = "🐾🍪";
+      emojiBg.appendChild(span);
+    }
+  </script>
+</body>
+</html>
